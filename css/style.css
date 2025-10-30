@@ -1,0 +1,451 @@
+/* GlOBAL */ 
+:root {
+  /* App Colors */
+  --color-primary: var(--color-black);
+  --color-primary-variant: var(--color-white);
+  --color-accent: var(--color-blue);
+  --color-text-black: var(--color-black);
+  --color-text-white: var(--color-white);
+  
+  /* Colors */
+  --color-white: #f5f5f5;
+  --color-gray: #313539;
+  --color-black: #1c1c1c;
+  --color-blue: #0a4ea8;
+  
+  /* Size */
+  --size-max-width: 1200px;
+}
+/* FONTS */
+.noto-serif-kr-uniquifier> {
+  font-family: "Noto Serif KR", serif;
+  font-optical-sizing: auto;
+  font-weight: 1rem;
+  font-style: normal;
+}
+.gelasio-uniquifier> {
+  font-family: "Gelasio", serif;
+  font-optical-sizing: auto;
+  font-weight: 1rem;
+  font-style: normal;
+}
+
+.permanent-marker-regular {
+  font-family: "Permanent Marker", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+
+/* COMMON Start*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: "Gelasio", "Noto Serif KR";
+  letter-spacing: 0.01em;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: var(--color-text);
+}
+img {
+  display: block;
+}
+button {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: 0;
+  border: 0;
+}
+button:focus {
+  outline: 1px solid var(--color-accent);
+}
+/* COMMON finish*/
+/* HEADER start */
+.navbar {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    padding: 8px 24px;
+    width: 100%;    
+    z-index: 10;
+}
+.navbar__logo {
+    display: flex;
+    position: fixed;
+    align-items: center;
+}
+.navbar__logo img {
+    display: block;
+    position: fixed;
+    top: 1px;
+    width: 8rem;   
+    object-fit: cover;
+    margin: 0;
+    opacity: 1;
+}
+.navbar__name {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    opacity: 0.6;
+    color: var(--color-primary-variant);
+}
+/* MENU */
+.navbar__menu{
+    opacity: 0.6;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    text-align: center;
+    gap: 4rem;
+    color: var(--color-primary-variant);
+}
+.navbar__menu li {
+    padding: 8px 12px;
+}
+.navbar__menu li:hover {
+    background-color: var(--color-gray);
+    border-radius: 4px;
+}
+.navbar__instagram {
+    color: var(--color-white)
+}
+.navbar__togglebt {
+    display: none;
+    position: absolute;
+    right: 32px;
+    font-size: 1rem;
+    color: var(--color-white);
+}
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar__menu{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        flex-shrink: 0;
+    }
+    .navbar__logo img {
+        position: fixed;
+        height: auto;
+        z-index: 20;
+    }
+
+    .navbar__menu li {
+        width: 100%;
+        text-align: center;
+        gap: 16px;
+    }
+
+    .navbar__instagram i {
+      color: var(--color-white);
+      transition: color 0.3s ease;
+    }
+
+    .navbar__instagram i:hover {
+      color: var(--color-gray)
+    }
+
+    .navbar__togglebt {
+        margin-top: 0.8rem;
+        display: block;
+    }
+}
+
+/* HEADER finish */
+/* MAIN start */
+.backgroundimage {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--color-white);
+  background-color: var(--color-black);
+}
+
+.backgroundimage .bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0;
+  animation: smoothFade 24s infinite ease-in-out;
+}
+
+.backgroundimage .bg:nth-child(1) { animation-delay: 0s; }
+.backgroundimage .bg:nth-child(2) { animation-delay: 6s; }
+.backgroundimage .bg:nth-child(3) { animation-delay: 12s; }
+.backgroundimage .bg:nth-child(4) { animation-delay: 18s; }
+
+@keyframes smoothFade {
+  0%   { opacity: 0; }
+  8%   { opacity: 1; }
+  33%  { opacity: 1; }
+  41%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.overlay-content {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.overlay-content h1 {
+  font-size: 3rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  cursor: default;
+}
+
+.overlay-content p {
+  margin-top: 1.2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--color-primary-variant);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  cursor: default;
+}
+
+/* MAIN finish */
+/* FOOTER start */
+footer {
+  font-size: 0.8rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 30px 0;
+  background-color: transparent;
+  z-index: 10;
+}
+.copyright {
+  text-align: center;
+  color: var(--color-primary-variant);
+  cursor: default;
+}
+/* FOOTER finish */
+
+
+
+
+
+/* =============== */
+/* WORKS PAGE start*/
+
+.works-section {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  min-height: 100vh;
+  padding-top: 160px;
+  text-align: center;
+}
+
+.works-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8rem;
+  letter-spacing: 0.5em;
+  cursor: default;
+}
+
+.works-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  justify-items: center;
+  padding: 0 60px 100px;
+}
+
+.polaroid {
+  background: var(--color-primary-variant);
+  border-radius: 4px;
+  width: 300px;
+  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.photo-frame {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background: var(--color-primary);
+  overflow: hidden;
+}
+
+.photo {
+  filter: grayscale(100%);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 2s ease;
+}
+
+.photo.front { opacity: 0; }
+.polaroid:hover .photo.back { opacity: 0; }
+.polaroid:hover .photo.front { opacity: 1; }
+
+.caption {
+  position: relative;
+  height: 80px;
+  padding: 0 12px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  font-family: "Permanent Marker", serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: default;
+  opacity: .8;
+}
+
+/* Placeholder (사진 없는 카드용) */
+.placeholder .photo-frame {
+  background: var(--color-primary); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-photo {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-primary);
+  opacity: 0.9;
+}
+
+/* COMING SOON 텍스트 스타일 */
+.placeholder .caption {
+  color: var(--color-primary);
+  font-style: oblique;
+  opacity: 0.2;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: default;
+}
+
+@media screen and (max-width: 1024px) {
+  .works-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .works-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
+
+/* WORKS PAGE finish */
+/* ================= */
+
+/* ========================== */
+/* 🪟 DETAIL MODAL (작품 클릭 시 팝업) */
+/* ========================== */
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.85); /* 반투명 검은 배경 */
+  backdrop-filter: blur(6px); /* 배경 흐림 효과 */
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+/* 팝업 내부 콘텐츠 */
+.modal-content {
+  max-width: 80%;
+  background: #111;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  color: #fff;
+  animation: fadeIn 0.4s ease;
+}
+
+.modal-content img {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.modal-content h2 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.modal-content p {
+  font-size: 1rem;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+/* 닫기 버튼 */
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 1.8rem;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+.modal-close:hover {
+  opacity: 0.6;
+}
+
+/* 팝업 페이드인 애니메이션 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
