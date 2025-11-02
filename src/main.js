@@ -1,37 +1,39 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const modal = document.getElementById("worksModal");
-  const modalImg = document.querySelector(".works-modal__img");
-  const modalTitle = document.querySelector(".works-modal__title");
-  const modalDate = document.querySelector(".works-modal__date");
-  const modalCaption = document.querySelector(".works-modal__caption");
-  const modalDesc = document.querySelector(".works-modal__desc");
-  const closeBtn = document.querySelector(".works-modal__close");
+/****************************
+ * NAVBAR TOGGLE
+ ****************************/
+const togglebtn = document.querySelector(".navbar__togglebt");
+const menu = document.querySelector(".navbar__menu");
 
-  document.querySelectorAll(".polaroid:not(.placeholder)").forEach((item) => {
-    item.addEventListener("click", () => {
+togglebtn.addEventListener("click", () => {
+  menu.classList.toggle("active");
+});
 
-      // ✅ front 이미지 가져오기
-      const frontImg = item.querySelector(".photo.front")?.src ||
-                       item.querySelector(".photo.back")?.src ||
-                       "";
 
-      modalImg.src = frontImg;
 
-      // ✅ data-title, data-desc, data-date, caption 사용
-      modalTitle.textContent = item.dataset.title || "";
-      modalDate.textContent = item.dataset.date || "";
-      modalCaption.textContent = item.querySelector(".caption")?.innerText || "";
-      modalDesc.textContent = item.dataset.desc || "";
+/****************************
+ * POPUP OPEN / CLOSE
+ ****************************/
 
-      modal.style.display = "flex";
-    });
+const popup = document.querySelector(".popup");
+const popupClose = document.querySelector(".popup__close");
+
+// photo-frame 안의 no1 이미지 클릭 → 팝업 열기
+const triggers = document.querySelectorAll(".photo__frame .no1");
+
+triggers.forEach((img) => {
+  img.addEventListener("click", () => {
+    popup.classList.add("show");
   });
+});
 
-  closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
+// X 클릭 → 팝업 닫기
+popupClose.addEventListener("click", () => {
+  popup.classList.remove("show");
+});
 
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) modal.style.display = "none";
-  });
+// popup 배경 클릭 → 닫기
+popup.addEventListener("click", (e) => {
+  if (e.target === popup) {
+    popup.classList.remove("show");
+  }
 });

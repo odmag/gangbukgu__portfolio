@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Works | GANGBUKGU</title>
-
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Gelasio:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 
@@ -37,26 +37,31 @@
         </a>
       </li>
     </ul>
+
+    <a href="#" class="navbar__togglebt">
+      <i class="fa-solid fa-bars"></i>
+    </a>
   </nav>
 
-  <!-- WORKS -->
-  <main class="works-section">
-    <h1 class="works-title">Works</h1>
 
-    <div class="works-gallery">
+  <!-- WORKS -->
+  <main class="works__section">
+    <h1 class="works__title">Works</h1>
+
+    <div class="works__gallery">
 
       <!-- 카드 1 -->
-      <div class="polaroid">
-        <div class="photo-frame">
-          <img src="images/works/work1_back.jpg" alt="back view" class="photo back">
-          <img src="images/works/work1_front.jpg" alt="front view" class="photo front">
+      <div class="polaroid" data-index="0">
+        <div class="photo__frame">
+          <img src="images/works/work1_back.jpg" alt="back view" class="photo back no1">
+          <img src="images/works/work1_front.jpg" alt="front view" class="photo front no1">
         </div>
         <div class="caption">Everyone&#39;s Baby</div>
       </div>
 
       <!-- 카드 2 -->
-      <div class="polaroid">
-        <div class="photo-frame">
+      <div class="polaroid" data-index="1">
+        <div class="photo__frame">
           <img src="images/works/work2_back.jpg" alt="back view" class="photo back">
           <img src="images/works/work2_front.jpg" alt="front view" class="photo front">
         </div>
@@ -64,8 +69,8 @@
       </div>
 
       <!-- 카드 3 -->
-      <div class="polaroid">
-        <div class="photo-frame">
+      <div class="polaroid" data-index="2">
+        <div class="photo__frame">
           <img src="images/works/work3_back.jpg" alt="back view" class="photo back">
           <img src="images/works/work3_front.jpg" alt="front view" class="photo front">
         </div>
@@ -73,8 +78,8 @@
       </div>
 
       <!-- 카드 4 -->
-      <div class="polaroid">
-        <div class="photo-frame">
+      <div class="polaroid" data-index="3">
+        <div class="photo__frame">
           <img src="images/works/work4_back.jpg" alt="back view" class="photo back">
           <img src="images/works/work4_front.jpg" alt="front view" class="photo front">
         </div>
@@ -83,32 +88,32 @@
 
       <!-- Placeholder 카드 1 -->
        <div class="polaroid placeholder">
-         <div class="photo-frame">
-           <div class="empty-photo"></div>
+         <div class="photo__frame">
+           <div class="empty__photo"></div>
          </div>
          <div class="caption">COMING SOON</div>
        </div>
 
        <!-- Placeholder 카드 2 -->
        <div class="polaroid placeholder">
-         <div class="photo-frame">
-           <div class="empty-photo"></div>
+         <div class="photo__frame">
+           <div class="empty__photo"></div>
          </div>
          <div class="caption">COMING SOON</div>
        </div>
 
        <!-- Placeholder 카드 3 -->
        <div class="polaroid placeholder">
-         <div class="photo-frame">
-           <div class="empty-photo"></div>
+         <div class="photo-_frame">
+           <div class="empty__photo"></div>
          </div>
          <div class="caption">COMING SOON</div>
        </div>
 
        <!-- Placeholder 카드 4 -->
        <div class="polaroid placeholder">
-         <div class="photo-frame">
-           <div class="empty-photo"></div>
+         <div class="photo__frame">
+           <div class="empty__photo"></div>
          </div>
          <div class="caption">COMING SOON</div>
        </div>
@@ -120,5 +125,27 @@
     <p class="copyright">Copyright © gangbukgu All rights reserved</p>
   </footer>
   
+  <!-- POPUP -->
+  
+  <div class="popup">
+    <div class="popup__content">
+      <div class="popup__close">&times;</div>
+
+
+
+      <div class="popup__body">
+        <button class="popup__prev">&#10094;</button>  
+        <button class="popup__next">&#10095;</button>  
+        
+        <h2>EVERYONE'S BABY</h2>
+        <!-- <h2>모두의 아가</h2> -->
+        <img src="images/works/modal1/no1.JPG" alt="popup__image" class="popup__image">
+        
+        <p>여기에 설명 텍스트가 들어갑니다.여기에 설명 텍스트가 들어갑니다.여기에 설명 텍스트가 들어갑니다.여기에 설명 텍스트가 들어갑니다.여기에 설명 텍스트가 들어갑니다.여기에 설명 텍스트가 들어갑니다.여기에 설명 텍스트가 들어갑니다.여기에 설명 텍스트가 들어갑니다.여기에 설명 텍스트가 들어갑니다.여기에 설명 텍스트가 들어갑니다.여기에 설명 텍스트가 들어갑니다.여기에 설명 텍스트가 들어갑니다.여기에 설명 텍스트가 들어갑니다. lor여기에 설명 텍스트가 들어갑니다.lor여기에 설명 텍스트가 들어갑니다.스타일 미리 보기입니다.</p>
+      </div>
+     </div>
+  </div>
+  <script src="src/main.js" defer></script>
+
 </body>
 </html>

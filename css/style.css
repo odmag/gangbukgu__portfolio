@@ -1,4 +1,4 @@
-/* GlOBAL */ 
+/* GlOBAL ======================================*/ 
 :root {
   /* App Colors */
   --color-primary: var(--color-black);
@@ -39,12 +39,17 @@
 
 
 
-/* COMMON Start*/
+/* COMMON Start======================================*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+html {
+  scroll-behavior: stable both-edge;
+}
+
 body {
   margin: 0;
   font-family: "Gelasio", "Noto Serif KR";
@@ -52,6 +57,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-y: scroll;
 }
 h1,
 h2,
@@ -72,7 +78,7 @@ img {
   display: block;
 }
 button {
-  background-color: transparent;
+  background-color: var(--color-blue);
   cursor: pointer;
   border: none;
   outline: 0;
@@ -81,8 +87,8 @@ button {
 button:focus {
   outline: 1px solid var(--color-accent);
 }
-/* COMMON finish*/
-/* HEADER start */
+/* COMMON finish======================================*/
+/* HEADER start ======================================*/
 .navbar {
     display: flex;
     position: fixed;
@@ -114,7 +120,6 @@ button:focus {
     opacity: 0.6;
     color: var(--color-primary-variant);
 }
-/* MENU */
 .navbar__menu{
     opacity: 0.6;
     display: flex;
@@ -146,44 +151,56 @@ button:focus {
         flex-wrap: nowrap;
         flex-direction: column;
         align-items: flex-start;
+        padding: 8px 24px;
     }
-
     .navbar__menu{
         display: none;
         flex-direction: column;
+        transition: color 0.3s ease;
         align-items: center;
+        gap: 2rem;
         width: 100%;
         flex-shrink: 0;
     }
-    .navbar__logo img {
+    .navbar__logo img {  
         position: fixed;
         height: auto;
         z-index: 20;
     }
-
     .navbar__menu li {
         width: 100%;
         text-align: center;
         gap: 16px;
     }
-
     .navbar__instagram i {
+      display: block;
+      width: 100%;
       color: var(--color-white);
+      flex-direction: column;
       transition: color 0.3s ease;
+      align-items: center;
     }
-
-    .navbar__instagram i:hover {
-      color: var(--color-gray)
-    }
-
     .navbar__togglebt {
         margin-top: 0.8rem;
         display: block;
     }
-}
+    .navbar__menu.active,
+    .navbar__instagram i.active {
+      display: flex;
+      margin-top: 24px;
+      transition: color 0.3s ease;
+      background-color: var(--color-primary); opacity: .8;
+      border: #f5f5f5 1px solid;
+      padding: 24px 0 ;
+    }
+    .navbar__menu li:hover {
+      background-color: transparent;
+      transform: scale(1.05);
+    }
+   }
 
-/* HEADER finish */
-/* MAIN start */
+/* HEADER finish ======================================*/
+/* MAIN start ======================================*/
 .backgroundimage {
   position: relative;
   overflow: hidden;
@@ -220,21 +237,21 @@ button:focus {
   100% { opacity: 0; }
 }
 
-.overlay-content {
+.overlay__content {
   position: relative;
   z-index: 10;
   max-width: 800px;
   padding: 0 20px;
 }
 
-.overlay-content h1 {
+.overlay__content h1 {
   font-size: 3rem;
   letter-spacing: 2px;
   text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   cursor: default;
 }
 
-.overlay-content p {
+.overlay__content p {
   margin-top: 1.2rem;
   font-size: 1.1rem;
   line-height: 1.6;
@@ -243,8 +260,8 @@ button:focus {
   cursor: default;
 }
 
-/* MAIN finish */
-/* FOOTER start */
+/* MAIN finish ======================================*/
+/* FOOTER start ======================================*/
 footer {
   font-size: 0.8rem;
   position: fixed;
@@ -266,10 +283,10 @@ footer {
 
 
 
-/* =============== */
+/* ======================================== */
 /* WORKS PAGE start*/
 
-.works-section {
+.works__section {
   background-color: var(--color-primary);
   color: var(--color-white);
   min-height: 100vh;
@@ -277,7 +294,7 @@ footer {
   text-align: center;
 }
 
-.works-title {
+.works__title {
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: 8rem;
@@ -285,10 +302,10 @@ footer {
   cursor: default;
 }
 
-.works-gallery {
+.works__gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
+  gap: 80px;
   justify-items: center;
   padding: 0 60px 100px;
 }
@@ -301,12 +318,13 @@ footer {
   transition: transform 0.3s ease;
 }
 
-.photo-frame {
+.photo__frame {
   position: relative;
   width: 100%;
   height: 300px;
   background: var(--color-primary);
   overflow: hidden;
+  cursor: pointer;
 }
 
 .photo {
@@ -341,14 +359,14 @@ footer {
 }
 
 /* Placeholder (사진 없는 카드용) */
-.placeholder .photo-frame {
+.placeholder .photo__frame {
   background: var(--color-primary); 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.empty-photo {
+.empty__photo {
   width: 100%;
   height: 100%;
   background-color: var(--color-primary);
@@ -366,86 +384,166 @@ footer {
 }
 
 @media screen and (max-width: 1024px) {
-  .works-gallery {
+  .works__gallery {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (max-width: 600px) {
-  .works-gallery {
+  .works__gallery {
     grid-template-columns: 1fr;
   }
 }
 
-
-
-
-
 /* WORKS PAGE finish */
 /* ================= */
 
+
+
+
+
+
+
 /* ========================== */
-/* 🪟 DETAIL MODAL (작품 클릭 시 팝업) */
+/* POPUP */
 /* ========================== */
 
-.modal {
+.popup {
   display: none;
   position: fixed;
-  top: 0; left: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.85); /* 반투명 검은 배경 */
-  backdrop-filter: blur(6px); /* 배경 흐림 효과 */
+  background-color: rgba(12, 12, 12, 0.85); 
+  backdrop-filter: blur(4px); 
   justify-content: center;
   align-items: center;
   z-index: 200;
 }
 
-/* 팝업 내부 콘텐츠 */
-.modal-content {
-  max-width: 80%;
-  background: #111;
+.popup.show {
+  display: flex;
+}
+
+.popup__content {
+  position: relative;
+  max-width: 900px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: var(--color-primary-variant);
   padding: 30px;
-  border-radius: 8px;
   text-align: center;
-  color: #fff;
+  color: var(--color-primary-variant);
   animation: fadeIn 0.4s ease;
 }
 
-.modal-content img {
-  width: 100%;
+.popup__image {
+  margin: auto;
+  width: 80%;
   max-width: 600px;
-  margin-bottom: 20px;
+  margin-bottom: 32px;
   border-radius: 4px;
+  object-fit: contain;
 }
 
-.modal-content h2 {
+.popup__content h2 {
+  color: var(--color-text-black);
   margin-bottom: 10px;
-  font-size: 1.4rem;
+  font-size: 2.4rem;
+  cursor: default;
 }
 
-.modal-content p {
+.popup__content p {
+  color: var(--color-text-black);
   font-size: 1rem;
   opacity: 0.8;
   line-height: 1.5;
+  cursor: default;
 }
 
-/* 닫기 버튼 */
-.modal-close {
+.popup__close {
   position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 1.8rem;
-  color: #fff;
+  top: 10px;
+  right: 10px;
+  font-size: 2.0rem;
+  color: var(--color-primary);
   cursor: pointer;
   transition: opacity 0.3s ease;
 }
-.modal-close:hover {
+.popup__close:hover {
+  opacity: 0.6;
+}
+.popup__body {
+  position: relative;    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.popup__prev,
+.popup__next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.2rem;
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  padding: 10px;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.popup__prev:hover,
+.popup__next:hover {
   opacity: 0.6;
 }
 
-/* 팝업 페이드인 애니메이션 */
+.popup__prev {
+  left: 10px;
+}
+
+.popup__next {
+  right: 10px;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@media screen and (max-width: 768px) {
+  .popup__content {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .popup__body h2 {
+    font-size: 1.8rem;
+  }
+
+  .popup__image {
+    width: 95%;
+  }
+
+  .popup__body p {
+    font-size: 0.95rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .popup__content {
+    width: 94%;
+    padding: 16px;
+  }
+
+  .popup__body h2 {
+    font-size: 1.6rem;
+  }
+
+  .popup__body p {
+    font-size: 0.9rem;
+  }
 }
 
