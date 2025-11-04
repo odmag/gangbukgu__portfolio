@@ -265,7 +265,7 @@ button:focus {
 .overlay__content p {
   max-width: 1200px;
   margin-top: 3rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.6;
   color: var(--color-primary-variant);
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
@@ -415,10 +415,11 @@ footer {
 
   .overlay__content h1 {
     white-space: nowrap;  
+    font-size: 0.8rem;
   } 
 
   .overlay__content h2 {
-    font-size: 0.9rem;  
+    font-size: 0.8rem;  
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
