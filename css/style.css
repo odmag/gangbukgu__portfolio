@@ -253,6 +253,7 @@ button:focus {
 }
 
 .overlay__content h2 {
+  white-space: nowrap;
   overflow: hidden;
   font-size: 1rem;
   margin-top: -1rem;
@@ -262,7 +263,7 @@ button:focus {
 }
 
 .overlay__content p {
-  max-width: 300px;
+  max-width: 1200px;
   margin-top: 3rem;
   font-size: 1.1rem;
   line-height: 1.6;
@@ -413,11 +414,12 @@ footer {
 }
 
   .overlay__content h1 {
-    font-size: 2rem;
     white-space: nowrap;  
+  } 
 
-  .overlay__content p {
-    max-width: 300px;
+  .overlay__content h2 {
+    font-size: 0.9rem;  
+    max-width: 1200px;
     margin: 0 auto;
     text-align: center;
     line-height: 1.6;
