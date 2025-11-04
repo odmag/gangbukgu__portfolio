@@ -396,7 +396,20 @@ footer {
   .polaroid {
     width: 100%;
     max-width: 400px;
-}
+  }
+
+  .overlay__content h1 {
+    font-size: 2.8rem;
+  } 
+   .overlay__content p {
+  max-width: 400px;
+  margin-top: 3rem;
+  font-size: .9rem;
+  line-height: 1.6;
+  color: var(--color-primary-variant);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  cursor: default;
+  }
 
 @media screen and (max-width: 600px) {
   .works__gallery {
@@ -404,7 +417,7 @@ footer {
   }
 
   .overlay__content h1 {
-    font-size: 3.0rem;
+    font-size: 2.6rem;
   } 
 }
   /* .overlay__content h2 {
@@ -418,7 +431,7 @@ footer {
   .overlay__content p {
   max-width: 400px;
   margin-top: 3rem;
-  font-size: .9rem;
+  font-size: .8rem;
   line-height: 1.6;
   color: var(--color-primary-variant);
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
