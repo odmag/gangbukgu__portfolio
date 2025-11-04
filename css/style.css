@@ -411,6 +411,8 @@ footer {
   cursor: default;
   }
 
+}
+
 @media screen and (max-width: 600px) {
   .works__gallery {
     grid-template-columns: 1fr;
@@ -419,14 +421,7 @@ footer {
   .overlay__content h1 {
     font-size: 2.6rem;
   } 
-}
-  /* .overlay__content h2 {
-    font-size: 0.8rem;  
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-    line-height: 1.6;
-  } */
+
 
   .overlay__content p {
   max-width: 400px;
