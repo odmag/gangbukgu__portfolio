@@ -252,15 +252,6 @@ button:focus {
   cursor: default;
 }
 
-.overlay__content h2 {
-  white-space: nowrap;
-  overflow: hidden;
-  font-size: 1rem;
-  margin-top: -1rem;
-  letter-spacing: 2rem;
-  text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-  cursor: default;
-}
 
 .overlay__content p {
   max-width: 440px;
@@ -411,13 +402,11 @@ footer {
   .works__gallery {
     grid-template-columns: 1fr;
   }
-}
 
   .overlay__content h1 {
-    white-space: nowrap;  
-    font-size: 2.0rem;
+    font-size: 3.0rem;
   } 
-
+}
   /* .overlay__content h2 {
     font-size: 0.8rem;  
     max-width: 1200px;
