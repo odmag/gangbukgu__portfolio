@@ -245,14 +245,25 @@ button:focus {
 }
 
 .overlay__content h1 {
+  white-space: nowrap;
   font-size: 3rem;
   letter-spacing: 2px;
   text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   cursor: default;
 }
 
+.overlay__content h2 {
+  overflow: hidden;
+  font-size: 1rem;
+  margin-top: -1rem;
+  letter-spacing: 2rem;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  cursor: default;
+}
+
 .overlay__content p {
-  margin-top: 1.2rem;
+  max-width: 300px;
+  margin-top: 3rem;
   font-size: 1.1rem;
   line-height: 1.6;
   color: var(--color-primary-variant);
@@ -386,12 +397,30 @@ footer {
 @media screen and (max-width: 1024px) {
   .works__gallery {
     grid-template-columns: repeat(2, 1fr);
+    padding: 0 16px 100px;
+    gap: 40px;
   }
+
+  .polaroid {
+    width: 100%;
+    max-width: 400px;
 }
 
 @media screen and (max-width: 600px) {
   .works__gallery {
     grid-template-columns: 1fr;
+  }
+}
+
+  .overlay__content h1 {
+    font-size: 2rem;
+    white-space: nowrap;  
+
+  .overlay__content p {
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.6;
   }
 }
 
