@@ -51,7 +51,7 @@
     <div class="works__gallery">
 
       <!-- 카드 1 -->
-      <div class="polaroid" data-index="0">
+      <div class="polaroid" data-index="0" data-target="#popup1">
         <div class="photo__frame">
           <img src="images/works/work1_back.JPG" alt="back view" class="photo back no1">
           <img src="images/works/work1_front.JPG" alt="front view" class="photo front no1">
@@ -60,7 +60,7 @@
       </div>
 
       <!-- 카드 2 -->
-      <div class="polaroid" data-index="1">
+      <div class="polaroid" data-index="1" data-target="#popup2">
         <div class="photo__frame">
           <img src="images/works/work2_back.JPG" alt="back view" class="photo back">
           <img src="images/works/work2_front.JPG" alt="front view" class="photo front">
@@ -69,7 +69,7 @@
       </div>
 
       <!-- 카드 3 -->
-      <div class="polaroid" data-index="2">
+      <div class="polaroid" data-index="2" data-target="#popup3">
         <div class="photo__frame">
           <img src="images/works/work3_back.JPG" alt="back view" class="photo back">
           <img src="images/works/work3_front.JPG" alt="front view" class="photo front">
@@ -78,7 +78,7 @@
       </div>
 
       <!-- 카드 4 -->
-      <div class="polaroid" data-index="3">
+      <div class="polaroid" data-index="3" data-target="#popup4">
         <div class="photo__frame">
           <img src="images/works/work4_back.JPG" alt="back view" class="photo back">
           <img src="images/works/work4_front.JPG" alt="front view" class="photo front">
@@ -125,9 +125,12 @@
     <p class="copyright">Copyright © gangbukgu All rights reserved</p>
   </footer>
   
-  <!-- POPUP -->
+
+
+
+  <!-- POPUP 1-->
   
-  <div class="popup">
+  <div class="popup" id="popup1" data-folder="modal1" data-total="4">
     <div class="popup__content">
       <div class="popup__close">&times;</div>
 
@@ -147,6 +150,23 @@
       </div>
      </div>
   </div>
+
+  <!-- POPUP 2 -->
+<div class="popup" id="popup2" data-folder="modal2" data-total="4">
+  <div class="popup__content">
+    <div class="popup__close">&times;</div>
+    <div class="popup__body">
+      <button class="popup__prev">&#10094;</button>  
+      <button class="popup__next">&#10095;</button>  
+      <h2>FREE WOMAN</h2>
+      <img src="images/works/modal2/no1.JPG" alt="popup__image" class="popup__image">
+      <p class="popup__desc">
+        &quot;머리 밀고 싶어요. 빡빡 시원하게. 아니 한 번도 머리빨 본 적도 없으면서 무슨 여성성의 상징이라고 놓치고 못하고 힘들게 감고, 팔 떨어지게 드라이하고 아무 의미 없는 머리카락에 평생을 시달리는 느낌이에요. 깔끔하게 밀면 쓸데없는 것도 없어지고 세상 가벼울 것 같아요.&quot;<br><br>《나의 해방일지》
+      </p>
+    </div>
+  </div>
+</div>
+
   <script src="src/main.js" defer></script>
 
 </body>
