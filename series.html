@@ -52,13 +52,35 @@
   <h1 class="series__title">Series</h1>
 
 
+      <!-- LIFE -->
+    <section class="seriesItem" data-series="life">
+      <div class="seriesImg" style="background-image: url('images/series/series1.JPG');"></div>
+      <h2 class="seriesTitle">LIFE</h2>
+    </section>
+
+    <!-- ONCE (placeholder) -->
+    <section class="seriesItem placeholder" data-series="once">
+      <div class="seriesImg placeholderBg"></div>
+      <h2 class="seriesTitle">ONCE</h2>
+    </section>
+
+
 </main>
 
+<!-- LIGHTBOX -->
+  <div id="seriesLightbox" class="slb">
+    <button class="slbClose">×</button>
+    <button class="slbNav prev">‹</button>
+    <img class="slbImg" src="" alt="" />
+    <button class="slbNav next">›</button>
+  </div>
 
-</body>
-
-
-  <script src="src/main.js" defer></script>
-  <footer>
+ <footer>
     <p class="copyright">Copyright © gangbukgu All rights reserved</p>
   </footer>
+
+  <script src="src/main.js" defer></script>
+  <script src="src/series.js" defer></script>
+
+</body>
+</html>
