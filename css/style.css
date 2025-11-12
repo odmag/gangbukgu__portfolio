@@ -738,6 +738,12 @@ footer {
   .popup__body p {
     font-size: 0.8rem;
   }
+
+  .popup__close {
+
+  font-size: 1.6rem;
+ 
+}
 }
 
 
@@ -836,6 +842,7 @@ footer {
   color: rgba(255,255,255,0.7);
   line-height: 1.55;
   margin-bottom: .35rem;
+  max-width: 60ch;
 }
 
 .note__date {
@@ -917,8 +924,6 @@ footer {
   font-size: 1rem;
   white-space: pre-line;
 }
-
-
 
 
 
