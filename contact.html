@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About | GANGBUKGU</title>
+  <title>Contact | GANGBUKGU</title>
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
    
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,39 +47,32 @@
     </a>
   </nav>
 
-  <!-- ABOUT -->
-    <main class="about__section">
-     <h1 class="about__title">About</h1>
+  <!-- CONTACT -->
+  <main class="contact__section">
+  <h1 class="contact__title">Contact</h1>
 
-        <section class="about__whitebox">
+  <section class="contact__whitebox">
 
-         <div class="about__grid">
+    <p class="contact__suggestion">
+    Let’s create something meaningful together.
+    </p>
 
-      <!-- LEFT -->
-      <div class="about__left">
-        <h1 class="about__text">
-          GANGBUKGU is a Man based in Korea,<br>
-          working with memories, emotions, textures and concrete.
-        </h1>
-        <img class="about__photo" src="images/profile/me.JPG" alt="profile" />
-      </div>
+    <form class="contact__form" action="https://formspree.io/f/yourID" method="POST">
 
-      <!-- RIGHT -->
-      <div class="about__right">
-        <p>
-          착하고 귀여운 삶의 순간들을 언젠가부터 남기고 싶었습니다.
-          잠깐 마음에 왔다가 떠나가버리는 감정들을 붙잡아 두고 싶었습니다.
-          고맙게도, 콘크리트와 손을 통해 그 마음들을 겨우 표현할 수 있었습니다.
-          아기가 노인이 되기까지 도대체 얼마나 많은 시간들이 흐를까요?
-          이 작은 조각들을 가만히 바라봐 주세요. 
-          어딘가에 숨어있었던 소중한 기억들이 여러분에게도 찾아와주길 바랍니다.
-        </p>
-        <img class="about__right__img" src="/images/favicon.ico" alt="손바닥">
-      </div>
+      <label>NAME / 이름</label>
+      <input type="text" name="name" required />
 
-    </div>
-    </section>
-    </main>
+      <label>EMAIL / 이메일</label>
+      <input type="email" name="email" required />
+
+      <label>MESSAGE / 메시지</label>
+      <textarea name="message" required></textarea>
+
+      <button type="submit" class="contact__submit">send</button>
+    </form>
+  </section>
+</main>
+
 
 </body>
   <script src="src/main.js" defer></script>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes | GANGBUKGU</title>
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+   
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gelasio:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+  <script src="https://kit.fontawesome.com/1c21211dd2.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="notes__page">
+  <!-- HEADER -->
+  <nav class="navbar">
+    <div class="navbar__left">
+      <div class="navbar__logo">
+        <img src="images/favicon.ico" alt="logo" />
+      </div>
+      <div class="navbar__name">
+        <a href="index.html"><strong>gangbukgu</strong></a>
+      </div>
+    </div>
+
+    <ul class="navbar__menu">
+      <li><a href="about.html">About</a></li>
+
+      <li><a href="works.html">Works</a></li>
+      <li><a href="series.html">Series</a></li>
+      <!-- <li><a href="#">Exhibition</a></li> -->
+      <li><a href="notes.html">Notes</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li>
+        <a href="https://www.instagram.com/odmag_/" target="_blank" class="navbar__instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </li>
+    </ul>
+
+    <a href="#" class="navbar__togglebt">
+      <i class="fa-solid fa-bars"></i>
+    </a>
+  </nav>
+
+  <!-- NOTES -->
+<!-- MAIN -->
+  <main class="notes__section">
+    <h1 class="notes__title">Notes</h1>
+   
+
+  <!-- NOTES 리스트 -->
+  <section class="notes__list">
+
+    <!-- row -->
+    <article class="note__row" data-note="note01">
+      <div class="note__num">01</div>
+      <a class="note__info">
+        <h2 class="note__title">중년이 되었다</h2>
+        <p class="note__excerpt">이제 병원에 가면 의사 선생님은 이렇게 말한다…</p>
+        <time class="note__date">2024.01</time>
+      </a>
+      <div class="note__thumb"><img src="images/notes/01.jpg" alt=""></div>
+    </article>
+
+    <article class="note__row" data-note="note02">
+      <div class="note__num">02</div>
+      <a class="note__info">
+        <h2 class="note__title">퇴사 후유증</h2>
+        <p class="note__excerpt">2023년 12월 31일 일요일. 두번째 퇴사를 했다…</p>
+        <time class="note__date">2024.02</time>
+      </a>
+      <div class="note__thumb"><img src="images/notes/02.jpg" alt=""></div>
+    </article>
+
+    <article class="note__row" data-note="note03">
+      <div class="note__num">03</div>
+      <a class="note__info">
+        <h2 class="note__title">팩트체크</h2>
+        <p class="note__excerpt">이제는 무언가를 해야할 것만 같았다…</p>
+        <time class="note__date">2024.03</time>
+      </a>
+      <div class="note__thumb"><img src="images/notes/03.jpg" alt=""></div>
+    </article>
+
+       <article class="note__row" data-note="note04">
+      <div class="note__num">04</div>
+      <a class="note__info">
+        <h2 class="note__title">뼈아픈실수</h2>
+        <p class="note__excerpt">며칠의 고민을 요약하면 이랬다…</p>
+        <time class="note__date">2024.04</time>
+      </a>
+      <div class="note__thumb"><img src="images/notes/04.jpg" alt=""></div>
+    </article>
+
+  </section>
+</main>
+
+
+</body>
+
+
+
+<!-- NOTES POPUP -->
+<div id="notePopup" class="notePopup">
+  <div class="notePopup__content">
+    <button class="notePopup__close" aria-label="close">&times;</button>
+
+    <h2 class="notePopup__title"></h2>
+    <p class="notePopup__date"></p>
+
+    <article class="notePopup__body"></article>
+
+  </div>
+</div>
+
+
+
+  <script src="src/main.js" defer></script>
+  <footer>
+    <p class="copyright">Copyright © gangbukgu All rights reserved</p>
+  </footer>
