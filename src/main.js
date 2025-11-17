@@ -17,3 +17,22 @@ if (togglebtn) {
 window.addEventListener("load", () => {
   document.body.classList.remove("preload");
 });
+
+<script>
+  const images = [
+    'images/main_photo_1.JPG',
+    'images/main_photo_2.JPG',
+    'images/main_photo_3.JPG',
+    'images/main_photo_4.JPG',
+    'images/main_photo_5.JPG',
+    'images/main_photo_6.JPG',
+    'images/main_photo_7.JPG',
+    'images/main_photo_8.JPG'
+  ];
+
+  // 모든 이미지 프리로드
+  images.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+</script>
