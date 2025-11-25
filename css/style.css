@@ -60,6 +60,7 @@ body {
   overflow-y: auto;
 }
 
+
 h1,
 h2,
 h3,
@@ -1073,6 +1074,8 @@ footer {
   color: var(--color-primary-variant);
   min-height: 100vh;
   text-align: center;
+  height: 100vh;
+  
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1092,6 +1095,7 @@ footer {
   border-radius: 4px;
   max-width: 1000px;
   width: 92%;
+  overflow-y: auto;    
   background: var(--color-primary-variant);
   color: var(--color-primary);
   margin: 0 auto;
