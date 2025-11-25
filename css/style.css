@@ -73,7 +73,7 @@ ul {
 }
 a {
   text-decoration: none;
-  color: var(--color-text);
+  color: var(--color-primary-variant);
 }
 img {
   display: block;
@@ -98,7 +98,7 @@ button:focus {
     background-color: transparent;
     padding: 8px 24px;
     width: 100%;    
-    z-index: 10;
+    z-index: 999;
 }
 .navbar__logo {
     display: flex;

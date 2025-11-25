@@ -28,6 +28,7 @@ cards.forEach((card) => {
 
     // 팝업 열기
     popup.classList.add("show");
+    document.body.style.overflow = "hidden";
   });
 });
 
