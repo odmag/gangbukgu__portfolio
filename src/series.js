@@ -13,7 +13,7 @@ let curIndex = 0;
 
 /* series별 이미지 배열 */
 const seriesImages = {
-  life: ["s1.JPG", "s2.JPG", "s3.JPG", "s4.JPG"],
+  life: ["s1.JPG", "s2.JPG", "s3.JPG", "s4.JPG", "s5.JPG", "s6.JPG", "s7.JPG", "s8.JPG", "s9.JPG", "s10.JPG", "s11.JPG", "s12.JPG"],
   once: []  // placeholder
 };
 

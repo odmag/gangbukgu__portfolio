@@ -6,6 +6,13 @@
 // 모든 .polaroid 카드
 const cards = document.querySelectorAll(".polaroid");
 
+function lockScroll() {
+  document.body.style.overflow = "hidden";
+}
+
+function unlockScroll() {
+  document.body.style.overflow = "";
+}
 // 카드 클릭 → 팝업 열기
 cards.forEach((card) => {
   card.addEventListener("click", () => {
@@ -28,7 +35,7 @@ cards.forEach((card) => {
 
     // 팝업 열기
     popup.classList.add("show");
-    document.body.style.overflow = "hidden";
+    lockScroll();
   });
 });
 
@@ -40,6 +47,7 @@ document.querySelectorAll(".popup__close").forEach((btn) => {
     e.stopPropagation();
     const popup = btn.closest(".popup");
     popup.classList.remove("show");
+    unlockScroll(); 
   });
 });
 
@@ -53,7 +61,7 @@ document.querySelectorAll(".popup").forEach((popup) => {
 });
 
 /****************************************************
- * NEXT / PREV — 이벤트 위임
+ * NEXT / PREV 
  ****************************************************/
 document.addEventListener("click", (e) => {
   // NEXT
