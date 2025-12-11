@@ -1159,3 +1159,41 @@ footer {
   opacity: 1;
   background: var(--color-primary);
 }
+
+.contact__popup {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+.contact__popup.is-visible {
+  display: flex;
+}
+
+.contact__popup-inner {
+  background: var(--color-white);
+  color: var(--color-text-black);
+  padding: 2rem 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  min-width: 260px;
+}
+
+.contact__popup-inner button {
+  margin-top: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid var(--color-black);
+  background: transparent;
+  cursor: pointer;
+}
+
+.contact__popup-inner button:hover {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+
