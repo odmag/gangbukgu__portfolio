@@ -672,7 +672,7 @@ footer {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 2.2rem;
+  font-size: 1.2rem;
   background: none;
   border: none;
   color: var(--color-primary);
@@ -975,6 +975,9 @@ footer {
   color: rgba(255,255,255,0.7);
   line-height: 1.55;
   margin-bottom: .35rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 60ch;
 }
 
@@ -1147,6 +1150,7 @@ footer {
   border: var(--color-primary) 1px solid;;
   border-radius: 4px;
   font-size: 1rem;
+  color: var(--color-primary);
   cursor: pointer;
 }
 
