@@ -1351,3 +1351,20 @@ footer {
   }
 
 }
+
+.seriesTitle,
+.series-page .seriesTitle {
+  font-family: "Gelasio", serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.5em;
+  color: var(--color-white);
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .seriesTitle,
+  .series-page .seriesTitle {
+    font-size: 1rem;
+  }
+}
