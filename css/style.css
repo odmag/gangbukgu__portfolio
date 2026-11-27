@@ -1324,10 +1324,10 @@ footer {
 .series-page .seriesTitle {
   position: relative;
   z-index: 5;
+  font-family: inherit;
   font-size: 3rem;
+  font-weight: 700;
   letter-spacing: 0.3em;
-  font-family: "Gelasio", serif;
-  font-weight: 400;
   color: var(--color-white);
   opacity: 0.9;
 }
