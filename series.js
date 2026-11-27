@@ -24,7 +24,7 @@ seriesItems.forEach(item => {
   item.addEventListener("click", () => {
     currentSeries = item.dataset.series;
 
-    if(currentSeries === "life2" || !seriesImages[currentSeries].length){
+    if(currentSeries === "life2" || !seriesImages[currentSeries] || !seriesImages[currentSeries].length){
       alert("Coming soon");
       return;
     }
@@ -68,13 +68,16 @@ window.addEventListener("keydown", e=>{
 ************/
 function loadImg(){
   const files = seriesImages[currentSeries];
+
+  const folder = currentSeries === "life" ? "series1" : "series2";
+
   slbImg.classList.add("fade");
+
   setTimeout(()=>{
-    slbImg.src = `images/series/series1/${files[curIndex]}`;
-    slbImg.onload = ()=> slbImg.classList.remove("fade");
+    slbImg.onload = () => slbImg.classList.remove("fade");
+    slbImg.src = `images/series/${folder}/${files[curIndex]}`;
   }, 200);
 }
-
 
 /************
  * NAV
