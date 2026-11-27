@@ -61,46 +61,53 @@
   <!-- SERIES -->
   <main class="seriesWrap">
 
-    <!-- LIFE -->
-    <section class="seriesItem"
-             data-series="life"
-             role="button"
-             tabindex="0"
-             aria-label="LIFE 사진 보기">
+    <!-- 페이지 제목 -->
+    <h1 class="series__title">Series</h1>
 
-      <div class="seriesImg"
-           style="background-image: url('images/series/series1.JPG');">
-      </div>
+    <!-- 시리즈 목록 -->
+    <div class="seriesList">
 
-      <h1 class="seriesTitle">LIFE</h1>
-    </section>
+      <!-- LIFE -->
+      <section class="seriesItem"
+               data-series="life"
+               role="button"
+               tabindex="0"
+               aria-label="LIFE 사진 보기">
 
-    <!-- ONCE -->
-    <section class="seriesItem"
-             data-series="once"
-             role="button"
-             tabindex="0"
-             aria-label="ONCE 사진 보기">
+        <div class="seriesImg"
+             style="background-image: url('images/series/series1.JPG');">
+        </div>
 
-      <div class="seriesImg"
-           style="background-image: url('images/series/series2.JPG');">
-      </div>
+        <h2 class="seriesTitle">LIFE</h2>
+      </section>
 
-      <h2 class="seriesTitle">ONCE</h2>
-    </section>
+      <!-- ONCE -->
+      <section class="seriesItem"
+               data-series="once"
+               role="button"
+               tabindex="0"
+               aria-label="ONCE 사진 보기">
 
-    <!-- LIFE2 -->
-    <section class="seriesItem placeholder"
-             data-series="life2"
-             role="button"
-             tabindex="0"
-             aria-label="LIFE2 준비 중">
+        <div class="seriesImg"
+             style="background-image: url('images/series/series2.JPG');">
+        </div>
 
-      <div class="seriesImg"></div>
+        <h2 class="seriesTitle">ONCE</h2>
+      </section>
 
-      <h2 class="seriesTitle">LIFE2</h2>
-    </section>
+      <!-- LIFE2 -->
+      <section class="seriesItem placeholder"
+               data-series="life2"
+               role="button"
+               tabindex="0"
+               aria-label="LIFE2 준비 중">
 
+        <div class="seriesImg"></div>
+
+        <h2 class="seriesTitle">LIFE2</h2>
+      </section>
+
+    </div>
   </main>
 
   <!-- SERIES LIGHTBOX -->
@@ -111,27 +118,22 @@
        aria-label="시리즈 사진 보기"
        aria-hidden="true">
 
-    <!-- 닫기 -->
     <button type="button"
             class="slbClose"
             aria-label="닫기">&times;</button>
 
-    <!-- 이전 사진 -->
     <button type="button"
             class="slbNav prev"
             aria-label="이전 사진">&#10094;</button>
 
-    <!-- 작품 사진 -->
     <img class="slbImg"
          src=""
          alt="시리즈 작품 사진" />
 
-    <!-- 다음 사진 -->
     <button type="button"
             class="slbNav next"
             aria-label="다음 사진">&#10095;</button>
 
-    <!-- 사진 번호 -->
     <div class="slbCounter" aria-live="polite"></div>
 
   </div>

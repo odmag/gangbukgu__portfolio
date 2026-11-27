@@ -788,14 +788,33 @@ footer {
 
 .seriesWrap {
   width: 100%;
+  min-height: 100vh;
+  padding: 160px 0 110px;
   overflow-x: hidden;
-  background: var(--color-black);
+  background: var(--color-primary);
+  color: var(--color-primary-variant);
+  text-align: center;
+}
+
+.series__title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8rem;
+  letter-spacing: 0.5em;
+  cursor: default;
+}
+
+.seriesList {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+  display: grid;
+  gap: 40px;
 }
 
 .seriesItem {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 360px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -1228,4 +1247,11 @@ footer {
   font-size: 14px;
   letter-spacing: 0.08em;
   pointer-events: none;
+}
+
+/* SERIES layout on smaller screens */
+@media (max-width: 768px) {
+  .seriesWrap { padding-top: 160px; }
+  .seriesList { width: 92%; gap: 24px; }
+  .seriesItem { height: 240px; }
 }
