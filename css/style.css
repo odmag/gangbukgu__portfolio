@@ -17,13 +17,13 @@
   --size-max-width: 1200px;
 }
 /* FONTS */
-.noto-serif-kr-uniquifier> {
+.noto-serif-kr-uniquifier {
   font-family: "Noto Serif KR", serif;
   font-optical-sizing: auto;
   font-weight: 1rem;
   font-style: normal;
 }
-.gelasio-uniquifier> {
+.gelasio-uniquifier {
   font-family: "Gelasio", serif;
   font-optical-sizing: auto;
   font-weight: 1rem;
@@ -47,7 +47,7 @@
 }
 
 html {
-  scroll-behavior: stable both-edge;
+  scroll-behavior: smooth;
 }
 
 body {

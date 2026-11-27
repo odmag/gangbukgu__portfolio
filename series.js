@@ -58,6 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const openSelectedSeries = () => {
 
       const selectedSeries = item.dataset.series;
+      
+      console.log("클릭한 시리즈:", selectedSeries);
 
       // LIFE2만 Coming soon
       if (selectedSeries === "life2") {
