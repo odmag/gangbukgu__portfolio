@@ -757,157 +757,270 @@ footer {
 }
 
 
-/* ====================================================== */
 
+/* ====================================================== */
 /* SERIES */
-
 /* ====================================================== */
 
-
-.series__section {
-  background-color: var(--color-primary);
-  color: var(--color-primary-variant);
-  min-height: 100vh;
-  padding-top: 160px;
-  text-align: center;
-  padding-bottom: 80px; 
-  overflow-x: hidden;
-}
-
-.series__title {
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 8rem;
-  letter-spacing: 0.5em;
-  cursor: default;
-}
-
-/* ==========================
-   SERIES PAGE
-========================== */
-
-.seriesWrap {
+.series-page .seriesWrap {
   width: 100%;
   overflow-x: hidden;
-  background: var(--color-black);
+  background: #111;
 }
 
-.seriesItem {
+.series-page .seriesItem {
   position: relative;
   width: 100%;
   height: 100vh;
-  cursor: pointer;
+  min-height: 440px;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+  cursor: pointer;
 }
 
-.seriesImg {
+.series-page .seriesImg {
   position: absolute;
   inset: 0;
-  background-size: cover;
+
   background-position: center;
+  background-size: cover;
+
   filter: grayscale(100%);
   opacity: 0.95;
-  transition: all .3s ease;
+
+  transition: filter 0.3s ease, opacity 0.3s ease;
 }
 
-.seriesItem:hover .seriesImg {
+.series-page .seriesItem:hover .seriesImg {
   filter: grayscale(0%);
   opacity: 1;
 }
 
-.seriesTitle {
+.series-page .seriesTitle {
   position: relative;
-  z-index: 5;
+  z-index: 1;
+
+  color: #fff;
+  font-family: "Gelasio", serif;
   font-size: 3rem;
   letter-spacing: 0.3em;
-  font-family: "Gelasio", serif;
-  color: var(--color-white);
-  opacity: 0.9;
+  font-weight: 400;
 }
 
-/* placeholder */
-.placeholder .seriesImg {
+/* LIFE2 - COMING SOON */
+
+.series-page .placeholder .seriesImg {
   background: #999;
-  opacity: .4;
+  opacity: 0.4;
 }
 
-/* ========== LIGHTBOX ========== */
-.slb {
+
+/* ====================================================== */
+/* SERIES LIGHTBOX */
+/* ====================================================== */
+
+#seriesLightbox.slb {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.86);
-  backdrop-filter: blur(4px);
+
+  z-index: 99999;
+
   display: none;
-  justify-content: center;
   align-items: center;
-  z-index: 9990;
+  justify-content: center;
+
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(4px);
+
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.2s ease;
 }
 
-.slb.show {
+#seriesLightbox.slb.show {
   display: flex;
   opacity: 1;
 }
 
-.slbImg {
-  max-width: 90vw;
-  max-height: 90vh;
+
+/* ====================================================== */
+/* LIGHTBOX IMAGE */
+/* ====================================================== */
+
+#seriesLightbox .slbImg {
+  display: block;
+  position: relative;
+  z-index: 1;
+
+  max-width: min(86vw, 1400px);
+  max-height: 88vh;
+  max-height: 88dvh;
+
+  width: auto;
+  height: auto;
+
   object-fit: contain;
+
   opacity: 1;
-  transition: opacity .35s ease;
+  transition: opacity 0.15s ease;
 }
 
-.slbImg.fade {
+#seriesLightbox .slbImg.fade {
   opacity: 0;
 }
 
-.slbClose {
+
+/* ====================================================== */
+/* LIGHTBOX BUTTONS */
+/* ====================================================== */
+
+#seriesLightbox button {
+  appearance: none;
+  -webkit-appearance: none;
+
+  display: flex;
+  visibility: visible;
+
+  align-items: center;
+  justify-content: center;
+
   position: absolute;
-  top: 24px;
-  right: 24px;
-  font-size: 2.5rem;
-  background: none;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+
+  background: transparent;
   color: #fff;
+
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1;
+
+  opacity: 0.9;
+
   cursor: pointer;
-  border: none;
+  pointer-events: auto;
 }
 
-.slbNav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 3rem;
-  background: none;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  padding: 20px;
-  opacity: 0.6;
-  transition: .3s;
-}
-
-.slbNav:hover {
+#seriesLightbox button:hover {
   opacity: 1;
 }
 
-.slbNav.prev {
-  left: 24px;
-}
-
-.slbNav.next {
-  right: 24px;
+#seriesLightbox button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
 }
 
 
-@media(max-width:768px){
-  .seriesTitle { font-size: 2rem; }
-  .slbNav { font-size: 2rem; }
+/* ====================================================== */
+/* PREVIOUS / NEXT ARROWS */
+/* ====================================================== */
+
+#seriesLightbox .slbNav {
+  top: 50%;
+  transform: translateY(-50%);
+
+  z-index: 5;
+
+  width: 64px;
+  height: 88px;
+
+  font-size: 42px;
+
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
+}
+
+#seriesLightbox .slbNav.prev {
+  left: 14px;
+}
+
+#seriesLightbox .slbNav.next {
+  right: 14px;
 }
 
 
+/* ====================================================== */
+/* CLOSE BUTTON */
+/* ====================================================== */
+
+#seriesLightbox .slbClose {
+  top: 14px;
+  right: 20px;
+
+  z-index: 6;
+
+  width: 54px;
+  height: 54px;
+
+  font-size: 44px;
+}
+
+
+/* ====================================================== */
+/* IMAGE COUNTER */
+/* ====================================================== */
+
+#seriesLightbox .slbCounter {
+  position: absolute;
+  z-index: 4;
+
+  bottom: 20px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  color: rgba(255, 255, 255, 0.8);
+
+  font: 14px Arial, sans-serif;
+  letter-spacing: 0.08em;
+}
+
+
+/* ====================================================== */
+/* MOBILE */
+/* ====================================================== */
+
+@media (max-width: 768px) {
+
+  .series-page .seriesTitle {
+    font-size: 2rem;
+  }
+
+  #seriesLightbox .slbImg {
+    max-width: 82vw;
+    max-height: 80dvh;
+  }
+
+  #seriesLightbox .slbNav {
+    width: 40px;
+    height: 72px;
+    font-size: 30px;
+  }
+
+  #seriesLightbox .slbNav.prev {
+    left: 0;
+  }
+
+  #seriesLightbox .slbNav.next {
+    right: 0;
+  }
+
+  #seriesLightbox .slbClose {
+    top: 12px;
+    right: 12px;
+  }
+
+}
 
 
 
