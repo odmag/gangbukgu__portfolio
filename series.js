@@ -1,112 +1,315 @@
-/***********************************
- * SERIES LIGHTBOX
-************************************/
-const seriesItems = document.querySelectorAll(".seriesItem");
-const slb = document.getElementById("seriesLightbox");
-const slbImg = slb.querySelector(".slbImg");
-const slbClose = slb.querySelector(".slbClose");
-const slbPrev = slb.querySelector(".slbNav.prev");
-const slbNext = slb.querySelector(".slbNav.next");
 
-let currentSeries = "";
-let curIndex = 0;
+"use strict";
 
-/* series별 이미지 배열 */
-const seriesImages = {
-  life: ["s1.JPG", "s2.JPG", "s3.JPG", "s4.JPG", "s5.JPG", "s6.JPG", "s7.JPG", "s8.JPG", "s9.JPG", "s10.JPG", "s11.JPG", "s12.JPG"],
-  once: ['a1.JPG', 'a2.JPG', 'a3.JPG', 'a4.JPG', 'a5.JPG', 'a6.JPG', 'a7.JPG', 'a8.JPG', 'a9.JPG', 'a10.JPG', 'a11.JPG', 'a12.JPG']  
-};
+(() => {
 
-/************
- * OPEN
-************/
-seriesItems.forEach(item => {
-  item.addEventListener("click", () => {
-    currentSeries = item.dataset.series;
+  const lightbox = document.getElementById("seriesLightbox");
 
-    if(currentSeries === "life2" || !seriesImages[currentSeries] || !seriesImages[currentSeries].length){
-      alert("Coming soon");
+  if (!lightbox) return;
+
+  const image = lightbox.querySelector(".slbImg");
+  const closeButton = lightbox.querySelector(".slbClose");
+  const prevButton = lightbox.querySelector(".slbNav.prev");
+  const nextButton = lightbox.querySelector(".slbNav.next");
+  const counter = lightbox.querySelector(".slbCounter");
+
+
+  /* =====================================
+     SERIES IMAGE PATHS
+  ===================================== */
+
+  const seriesImages = {
+
+    // LIFE: s1.JPG ~ s12.JPG
+    life: Array.from(
+      { length: 12 },
+      (_, i) => `images/series/series1/s${i + 1}.JPG`
+    ),
+
+    // ONCE: a1.JPG ~ a12.JPG
+    once: Array.from(
+      { length: 12 },
+      (_, i) => `images/series/series2/a${i + 1}.JPG`
+    ),
+
+    // LIFE2: Coming soon
+    life2: []
+
+  };
+
+
+  /* =====================================
+     STATE
+  ===================================== */
+
+  let currentImages = [];
+  let currentIndex = 0;
+
+  let lastTrigger = null;
+  let touchStartX = null;
+  let requestId = 0;
+
+
+  /* =====================================
+     SHOW IMAGE
+  ===================================== */
+
+  function showImage() {
+
+    if (!currentImages.length) return;
+
+    const id = ++requestId;
+    const url = currentImages[currentIndex];
+
+    image.classList.add("fade");
+
+    counter.textContent =
+      `${currentIndex + 1} / ${currentImages.length}`;
+
+    const preloader = new Image();
+
+    preloader.onload = () => {
+
+      if (id !== requestId) return;
+
+      image.src = url;
+
+      image.alt =
+        `시리즈 작품 사진 ${currentIndex + 1}`;
+
+      image.classList.remove("fade");
+
+    };
+
+    preloader.onerror = () => {
+
+      if (id !== requestId) return;
+
+      image.removeAttribute("src");
+
+      image.alt =
+        `이미지를 불러올 수 없습니다: ${url}`;
+
+      image.classList.remove("fade");
+
+      console.error("Series image not found:", url);
+
+    };
+
+    preloader.src = url;
+
+  }
+
+
+  /* =====================================
+     OPEN SERIES
+  ===================================== */
+
+  function openSeries(key, trigger) {
+
+    const files = seriesImages[key];
+
+    if (!files || files.length === 0) {
+
+      window.alert("Coming soon");
       return;
+
     }
 
-    curIndex = 0;
-    openLightbox();
+    lastTrigger = trigger;
+
+    currentImages = files;
+    currentIndex = 0;
+
+    lightbox.classList.add("show");
+
+    lightbox.setAttribute("aria-hidden", "false");
+
+    document.body.style.overflow = "hidden";
+
+    showImage();
+
+    closeButton.focus();
+
+  }
+
+
+  /* =====================================
+     CHANGE IMAGE
+  ===================================== */
+
+  function changeImage(direction) {
+
+    if (
+      !lightbox.classList.contains("show") ||
+      !currentImages.length
+    ) return;
+
+    currentIndex =
+      (currentIndex + direction + currentImages.length)
+      % currentImages.length;
+
+    showImage();
+
+  }
+
+
+  /* =====================================
+     CLOSE SERIES
+  ===================================== */
+
+  function closeSeries() {
+
+    if (!lightbox.classList.contains("show")) return;
+
+    ++requestId;
+
+    lightbox.classList.remove("show");
+
+    lightbox.setAttribute("aria-hidden", "true");
+
+    document.body.style.overflow = "";
+
+    image.removeAttribute("src");
+
+    if (lastTrigger) {
+      lastTrigger.focus();
+    }
+
+  }
+
+
+  /* =====================================
+     SERIES CLICK
+  ===================================== */
+
+  document
+    .querySelectorAll(".seriesItem[data-series]")
+    .forEach(item => {
+
+      item.addEventListener("click", () => {
+
+        openSeries(item.dataset.series, item);
+
+      });
+
+      item.addEventListener("keydown", event => {
+
+        if (
+          event.key === "Enter" ||
+          event.key === " "
+        ) {
+
+          event.preventDefault();
+
+          openSeries(item.dataset.series, item);
+
+        }
+
+      });
+
+    });
+
+
+  /* =====================================
+     ARROW BUTTONS
+  ===================================== */
+
+  prevButton.addEventListener("click", event => {
+
+    event.stopPropagation();
+    changeImage(-1);
+
   });
-});
+
+  nextButton.addEventListener("click", event => {
+
+    event.stopPropagation();
+    changeImage(1);
+
+  });
 
 
-function openLightbox(){
-  loadImg();
-  slb.classList.add("show");
-  document.body.style.overflow = "hidden";
-}
+  /* =====================================
+     CLOSE BUTTON
+  ===================================== */
+
+  closeButton.addEventListener("click", closeSeries);
+
+  lightbox.addEventListener("click", event => {
+
+    if (event.target === lightbox) {
+      closeSeries();
+    }
+
+  });
 
 
-/************
- * CLOSE
-************/
-function closeLightbox(){
-  slb.classList.remove("show");
-  document.body.style.overflow = "";
-}
-slbClose.addEventListener("click", closeLightbox);
+  /* =====================================
+     KEYBOARD
+  ===================================== */
 
-slb.addEventListener("click", e=>{
-  if(e.target === slb) closeLightbox();
-});
+  document.addEventListener("keydown", event => {
 
-window.addEventListener("keydown", e=>{
-  if(!slb.classList.contains("show")) return;
-  if(e.key === "Escape") closeLightbox();
-  if(e.key === "ArrowLeft") showPrev();
-  if(e.key === "ArrowRight") showNext();
-});
+    if (!lightbox.classList.contains("show")) return;
 
+    if (event.key === "Escape") {
 
-/************
- * LOAD
-************/
-function loadImg(){
-  const files = seriesImages[currentSeries];
+      closeSeries();
 
-  const folder = currentSeries === "life" ? "series1" : "series2";
+    } else if (event.key === "ArrowLeft") {
 
-  slbImg.classList.add("fade");
+      event.preventDefault();
+      changeImage(-1);
 
-  setTimeout(()=>{
-    slbImg.onload = () => slbImg.classList.remove("fade");
-    slbImg.src = `images/series/${folder}/${files[curIndex]}`;
-  }, 200);
-}
+    } else if (event.key === "ArrowRight") {
 
-/************
- * NAV
-************/
-function showPrev(){
-  const files = seriesImages[currentSeries];
-  curIndex = (curIndex - 1 + files.length) % files.length;
-  loadImg();
-}
-function showNext(){
-  const files = seriesImages[currentSeries];
-  curIndex = (curIndex + 1) % files.length;
-  loadImg();
-}
-slbPrev.addEventListener("click", showPrev);
-slbNext.addEventListener("click", showNext);
+      event.preventDefault();
+      changeImage(1);
+
+    }
+
+  });
 
 
-/************
- * SWIPE (mobile)
-************/
-let startX = 0;
+  /* =====================================
+     MOBILE SWIPE
+  ===================================== */
 
-slb.addEventListener("touchstart", e=>{
-  startX = e.touches[0].clientX;
-});
-slb.addEventListener("touchend", e=>{
-  let endX = e.changedTouches[0].clientX;
-  if(startX - endX > 80) showNext();
-  if(endX - startX > 80) showPrev();
-});
+  lightbox.addEventListener(
+    "touchstart",
+    event => {
 
+      touchStartX =
+        event.changedTouches[0]?.screenX ?? null;
+
+    },
+    { passive: true }
+  );
+
+  lightbox.addEventListener(
+    "touchend",
+    event => {
+
+      if (touchStartX === null) return;
+
+      const endX =
+        event.changedTouches[0]?.screenX;
+
+      if (endX === undefined) return;
+
+      const delta = endX - touchStartX;
+
+      touchStartX = null;
+
+      if (Math.abs(delta) > 50) {
+
+        changeImage(delta < 0 ? 1 : -1);
+
+      }
+
+    },
+    { passive: true }
+  );
+
+})();

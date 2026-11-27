@@ -1,27 +1,37 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Series | GANGBUKGU</title>
+
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-   
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gelasio:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link href="https://fonts.googleapis.com/css2?family=Gelasio:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
 
   <script src="https://kit.fontawesome.com/1c21211dd2.js" crossorigin="anonymous"></script>
+
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/series.css" />
+
+  <script src="src/main.js" defer></script>
+  <script src="src/series.js" defer></script>
 </head>
 
-<body class="about__page">
+<body class="about__page series-page">
+
   <!-- HEADER -->
   <nav class="navbar">
     <div class="navbar__left">
       <div class="navbar__logo">
         <img src="images/favicon.ico" alt="logo" />
       </div>
+
       <div class="navbar__name">
         <a href="index.html"><strong>gangbukgu</strong></a>
       </div>
@@ -29,64 +39,110 @@
 
     <ul class="navbar__menu">
       <li><a href="about.html">About</a></li>
-
       <li><a href="works.html">Works</a></li>
       <li><a href="series.html">Series</a></li>
-      <!-- <li><a href="#">Exhibition</a></li> -->
       <li><a href="notes.html">Notes</a></li>
       <li><a href="contact.html">Contact</a></li>
+
       <li>
-        <a href="https://www.instagram.com/gangbukgu_/" target="_blank" class="navbar__instagram">
+        <a href="https://www.instagram.com/gangbukgu_/"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="navbar__instagram">
           <i class="fa-brands fa-instagram"></i>
         </a>
       </li>
     </ul>
 
-    <a href="#" class="navbar__togglebt">
+    <a href="#" class="navbar__togglebt" aria-label="메뉴 열기">
       <i class="fa-solid fa-bars"></i>
     </a>
   </nav>
 
   <!-- SERIES -->
-<main class="series__section">
-  <h1 class="series__title">Series</h1>
-
+  <main class="seriesWrap">
 
     <!-- LIFE -->
-    <section class="seriesItem" data-series="life">
-      <div class="seriesImg" style="background-image: url('images/series/series1.JPG');"></div>
-      <h2 class="seriesTitle">LIFE</h2>
+    <section class="seriesItem"
+             data-series="life"
+             role="button"
+             tabindex="0"
+             aria-label="LIFE 사진 보기">
+
+      <div class="seriesImg"
+           style="background-image: url('images/series/series1.JPG');">
+      </div>
+
+      <h1 class="seriesTitle">LIFE</h1>
     </section>
 
-    <!-- ONCE  -->
-    <section class="seriesItem" data-series="once">
-      <div class="seriesImg" style="background-image: url('images/series/series2.JPG');"></div>
+    <!-- ONCE -->
+    <section class="seriesItem"
+             data-series="once"
+             role="button"
+             tabindex="0"
+             aria-label="ONCE 사진 보기">
+
+      <div class="seriesImg"
+           style="background-image: url('images/series/series2.JPG');">
+      </div>
+
       <h2 class="seriesTitle">ONCE</h2>
     </section>
 
-        <!-- LIFE2  -->
-    <section class="seriesItem placeholder" data-series="life2">
-      <div class="seriesImg placeholderBg"></div>
+    <!-- LIFE2 -->
+    <section class="seriesItem placeholder"
+             data-series="life2"
+             role="button"
+             tabindex="0"
+             aria-label="LIFE2 준비 중">
+
+      <div class="seriesImg"></div>
+
       <h2 class="seriesTitle">LIFE2</h2>
     </section>
 
+  </main>
 
-</main>
+  <!-- SERIES LIGHTBOX -->
+  <div id="seriesLightbox"
+       class="slb"
+       role="dialog"
+       aria-modal="true"
+       aria-label="시리즈 사진 보기"
+       aria-hidden="true">
 
-<!-- LIGHTBOX -->
-  <div id="seriesLightbox" class="slb">
-    <button class="slbClose"></button>
-    <button class="slbNav prev"></button>
-    <img class="slbImg" src="" alt="" />
-    <button class="slbNav next"></button>
+    <!-- 닫기 -->
+    <button type="button"
+            class="slbClose"
+            aria-label="닫기">&times;</button>
+
+    <!-- 이전 사진 -->
+    <button type="button"
+            class="slbNav prev"
+            aria-label="이전 사진">&#10094;</button>
+
+    <!-- 작품 사진 -->
+    <img class="slbImg"
+         src=""
+         alt="시리즈 작품 사진" />
+
+    <!-- 다음 사진 -->
+    <button type="button"
+            class="slbNav next"
+            aria-label="다음 사진">&#10095;</button>
+
+    <!-- 사진 번호 -->
+    <div class="slbCounter" aria-live="polite"></div>
+
   </div>
 
- <footer>
-    <p class="copyright">Copyright © gangbukgu All rights reserved</p>
+  <!-- FOOTER -->
+  <footer>
+    <p class="copyright">
+      Copyright © gangbukgu All rights reserved
+    </p>
   </footer>
-
-  <script src="src/main.js" defer></script>
-  <script src="src/series.js" defer></script>
 
 </body>
 </html>
