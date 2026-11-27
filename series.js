@@ -18,24 +18,26 @@
      SERIES IMAGE PATHS
   ===================================== */
 
-  const seriesImages = {
 
-    // LIFE: s1.JPG ~ s12.JPG
-    life: Array.from(
-      { length: 12 },
-      (_, i) => `images/series/series1/s${i + 1}.JPG`
-    ),
+const seriesImages = {
 
-    // ONCE: a1.JPG ~ a12.JPG
-    once: Array.from(
-      { length: 12 },
-      (_, i) => `images/series/series2/a${i + 1}.JPG`
-    ),
+  // LIFE
+  life: Array.from(
+    { length: 12 },
+    (_, i) => `images/series/series1/s${i + 1}.JPG`
+  ),
 
-    // LIFE2: Coming soon
-    life2: []
+  // ONCE
+  once: Array.from(
+    { length: 12 },
+    (_, i) => `images/series/series2/a${i + 1}.JPG`
+  ),
 
-  };
+  // LIFE2
+  life2: []
+
+};
+
 
 
   /* =====================================
