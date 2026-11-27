@@ -17,13 +17,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const slbNext = slb.querySelector(".slbNav.next");
   const slbCounter = slb.querySelector(".slbCounter");
 
-  if (!slbImg || !slbClose || !slbPrev || !slbNext) return;
+  if (!slbImg || !slbClose || !slbPrev || !slbNext) {
+    console.error("Series Lightbox 요소를 찾을 수 없습니다.");
+    return;
+  }
 
   let currentSeries = "";
   let curIndex = 0;
   let previousFocus = null;
   let previousOverflow = "";
-  let touchStartX = 0;
+  let touchStartX = null;
   let imageRequestId = 0;
 
   /***********************************
@@ -58,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const openSelectedSeries = () => {
 
       const selectedSeries = item.dataset.series;
-      
+
       console.log("클릭한 시리즈:", selectedSeries);
 
       // LIFE2만 Coming soon
@@ -67,11 +70,10 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // 등록되지 않은 시리즈
-      if (
-        !seriesImages[selectedSeries] ||
-        seriesImages[selectedSeries].length === 0
-      ) {
+      // 등록되지 않은 시리즈 확인
+      const images = seriesImages[selectedSeries];
+
+      if (!Array.isArray(images) || images.length === 0) {
         console.error(
           "시리즈 이미지가 등록되지 않았습니다:",
           selectedSeries
@@ -131,6 +133,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     imageRequestId++;
 
+    slbClose.blur();
+
     slb.classList.remove("show");
     slb.setAttribute("aria-hidden", "true");
 
@@ -155,13 +159,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const images = seriesImages[currentSeries];
 
-    if (!images || images.length === 0) return;
+    if (!Array.isArray(images) || images.length === 0) {
+      return;
+    }
 
     const imagePath = images[curIndex];
 
+    if (!imagePath) {
+      console.error("이미지 경로가 없습니다.");
+      return;
+    }
+
     const requestId = ++imageRequestId;
 
-    // 사진 전환 시 페이드 효과
+    // 사진 전환 페이드
     slbImg.classList.add("fade");
 
     const preload = new Image();
@@ -174,9 +185,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
+
           if (requestId === imageRequestId) {
             slbImg.classList.remove("fade");
           }
+
         });
       });
 
@@ -198,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     preload.src = imagePath;
 
-    // 사진 번호 표시
+    // 사진 번호
     if (slbCounter) {
       slbCounter.textContent =
         `${curIndex + 1} / ${images.length}`;
@@ -214,7 +227,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const images = seriesImages[currentSeries];
 
-    if (!images || images.length === 0) return;
+    if (!Array.isArray(images) || images.length === 0) {
+      return;
+    }
 
     curIndex =
       (curIndex - 1 + images.length) % images.length;
@@ -231,7 +246,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const images = seriesImages[currentSeries];
 
-    if (!images || images.length === 0) return;
+    if (!Array.isArray(images) || images.length === 0) {
+      return;
+    }
 
     curIndex = (curIndex + 1) % images.length;
 
@@ -244,9 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
    ***********************************/
 
   slbClose.addEventListener("click", closeLightbox);
-
   slbPrev.addEventListener("click", prevImg);
-
   slbNext.addEventListener("click", nextImg);
 
   /***********************************
@@ -270,6 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!slb.classList.contains("show")) return;
 
     if (e.key === "Escape") {
+      e.preventDefault();
       closeLightbox();
     }
 
@@ -283,6 +299,26 @@ document.addEventListener("DOMContentLoaded", () => {
       nextImg();
     }
 
+    // 라이트박스 안에서 Tab 이동
+    if (e.key === "Tab") {
+
+      const controls = [slbClose, slbPrev, slbNext];
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (
+        !e.shiftKey &&
+        document.activeElement === last
+      ) {
+        e.preventDefault();
+        first.focus();
+      }
+
+    }
+
   });
 
   /***********************************
@@ -292,6 +328,8 @@ document.addEventListener("DOMContentLoaded", () => {
   slb.addEventListener(
     "touchstart",
     e => {
+
+      if (!slb.classList.contains("show")) return;
 
       touchStartX = e.changedTouches[0].screenX;
 
@@ -303,10 +341,17 @@ document.addEventListener("DOMContentLoaded", () => {
     "touchend",
     e => {
 
-      const touchEndX =
-        e.changedTouches[0].screenX;
+      if (
+        !slb.classList.contains("show") ||
+        touchStartX === null
+      ) {
+        return;
+      }
 
+      const touchEndX = e.changedTouches[0].screenX;
       const difference = touchEndX - touchStartX;
+
+      touchStartX = null;
 
       if (Math.abs(difference) < 50) return;
 
