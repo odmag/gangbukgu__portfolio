@@ -20,13 +20,12 @@ const seriesImages = {
 /************
  * OPEN
 ************/
-
 seriesItems.forEach(item => {
   item.addEventListener("click", () => {
     currentSeries = item.dataset.series;
 
-    if (!seriesImages[currentSeries]) {
-      console.error("등록되지 않은 시리즈:", currentSeries);
+    if(currentSeries === "life2" || !seriesImages[currentSeries].length){
+      alert("Coming soon");
       return;
     }
 
@@ -36,7 +35,7 @@ seriesItems.forEach(item => {
 });
 
 
-function openLightbox() {
+function openLightbox(){
   loadImg();
   slb.classList.add("show");
   document.body.style.overflow = "hidden";
