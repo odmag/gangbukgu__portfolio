@@ -757,270 +757,157 @@ footer {
 }
 
 
-
 /* ====================================================== */
+
 /* SERIES */
+
 /* ====================================================== */
 
-.series-page .seriesWrap {
-  width: 100%;
+
+.series__section {
+  background-color: var(--color-primary);
+  color: var(--color-primary-variant);
+  min-height: 100vh;
+  padding-top: 160px;
+  text-align: center;
+  padding-bottom: 80px; 
   overflow-x: hidden;
-  background: #111;
 }
 
-.series-page .seriesItem {
+.series__title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8rem;
+  letter-spacing: 0.5em;
+  cursor: default;
+}
+
+/* ==========================
+   SERIES PAGE
+========================== */
+
+.seriesWrap {
+  width: 100%;
+  overflow-x: hidden;
+  background: var(--color-black);
+}
+
+.seriesItem {
   position: relative;
   width: 100%;
   height: 100vh;
-  min-height: 440px;
-
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  cursor: pointer;
 }
 
-.series-page .seriesImg {
+.seriesImg {
   position: absolute;
   inset: 0;
-
-  background-position: center;
   background-size: cover;
-
+  background-position: center;
   filter: grayscale(100%);
   opacity: 0.95;
-
-  transition: filter 0.3s ease, opacity 0.3s ease;
+  transition: all .3s ease;
 }
 
-.series-page .seriesItem:hover .seriesImg {
+.seriesItem:hover .seriesImg {
   filter: grayscale(0%);
   opacity: 1;
 }
 
-.series-page .seriesTitle {
+.seriesTitle {
   position: relative;
-  z-index: 1;
-
-  color: #fff;
-  font-family: "Gelasio", serif;
+  z-index: 5;
   font-size: 3rem;
   letter-spacing: 0.3em;
-  font-weight: 400;
+  font-family: "Gelasio", serif;
+  color: var(--color-white);
+  opacity: 0.9;
 }
 
-/* LIFE2 - COMING SOON */
-
-.series-page .placeholder .seriesImg {
+/* placeholder */
+.placeholder .seriesImg {
   background: #999;
-  opacity: 0.4;
+  opacity: .4;
 }
 
-
-/* ====================================================== */
-/* SERIES LIGHTBOX */
-/* ====================================================== */
-
-#seriesLightbox.slb {
+/* ========== LIGHTBOX ========== */
+.slb {
   position: fixed;
   inset: 0;
-
-  z-index: 99999;
-
-  display: none;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-  height: 100vh;
-  height: 100dvh;
-
-  background: rgba(0, 0, 0, 0.92);
+  background: rgba(0,0,0,.86);
   backdrop-filter: blur(4px);
-
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-#seriesLightbox.slb.show {
-  display: flex;
-  opacity: 1;
-}
-
-
-/* ====================================================== */
-/* LIGHTBOX IMAGE */
-/* ====================================================== */
-
-#seriesLightbox .slbImg {
-  display: block;
-  position: relative;
-  z-index: 1;
-
-  max-width: min(86vw, 1400px);
-  max-height: 88vh;
-  max-height: 88dvh;
-
-  width: auto;
-  height: auto;
-
-  object-fit: contain;
-
-  opacity: 1;
-  transition: opacity 0.15s ease;
-}
-
-#seriesLightbox .slbImg.fade {
-  opacity: 0;
-}
-
-
-/* ====================================================== */
-/* LIGHTBOX BUTTONS */
-/* ====================================================== */
-
-#seriesLightbox button {
-  appearance: none;
-  -webkit-appearance: none;
-
-  display: flex;
-  visibility: visible;
-
-  align-items: center;
+  display: none;
   justify-content: center;
-
-  position: absolute;
-
-  margin: 0;
-  padding: 0;
-
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-
-  background: transparent;
-  color: #fff;
-
-  font-family: Arial, sans-serif;
-  font-weight: 400;
-  line-height: 1;
-
-  opacity: 0.9;
-
-  cursor: pointer;
-  pointer-events: auto;
+  align-items: center;
+  z-index: 9990;
+  opacity: 0;
+  transition: opacity 0.35s ease;
 }
 
-#seriesLightbox button:hover {
+.slb.show {
+  display: flex;
   opacity: 1;
 }
 
-#seriesLightbox button:focus-visible {
-  outline: 2px solid #fff;
-  outline-offset: 3px;
+.slbImg {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  opacity: 1;
+  transition: opacity .35s ease;
 }
 
+.slbImg.fade {
+  opacity: 0;
+}
 
-/* ====================================================== */
-/* PREVIOUS / NEXT ARROWS */
-/* ====================================================== */
+.slbClose {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 2.5rem;
+  background: none;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}
 
-#seriesLightbox .slbNav {
+.slbNav {
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
-
-  z-index: 5;
-
-  width: 64px;
-  height: 88px;
-
-  font-size: 42px;
-
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
+  font-size: 3rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 20px;
+  opacity: 0.6;
+  transition: .3s;
 }
 
-#seriesLightbox .slbNav.prev {
-  left: 14px;
+.slbNav:hover {
+  opacity: 1;
 }
 
-#seriesLightbox .slbNav.next {
-  right: 14px;
+.slbNav.prev {
+  left: 24px;
 }
 
-
-/* ====================================================== */
-/* CLOSE BUTTON */
-/* ====================================================== */
-
-#seriesLightbox .slbClose {
-  top: 14px;
-  right: 20px;
-
-  z-index: 6;
-
-  width: 54px;
-  height: 54px;
-
-  font-size: 44px;
+.slbNav.next {
+  right: 24px;
 }
 
 
-/* ====================================================== */
-/* IMAGE COUNTER */
-/* ====================================================== */
-
-#seriesLightbox .slbCounter {
-  position: absolute;
-  z-index: 4;
-
-  bottom: 20px;
-  left: 50%;
-
-  transform: translateX(-50%);
-
-  color: rgba(255, 255, 255, 0.8);
-
-  font: 14px Arial, sans-serif;
-  letter-spacing: 0.08em;
+@media(max-width:768px){
+  .seriesTitle { font-size: 2rem; }
+  .slbNav { font-size: 2rem; }
 }
 
 
-/* ====================================================== */
-/* MOBILE */
-/* ====================================================== */
-
-@media (max-width: 768px) {
-
-  .series-page .seriesTitle {
-    font-size: 2rem;
-  }
-
-  #seriesLightbox .slbImg {
-    max-width: 82vw;
-    max-height: 80dvh;
-  }
-
-  #seriesLightbox .slbNav {
-    width: 40px;
-    height: 72px;
-    font-size: 30px;
-  }
-
-  #seriesLightbox .slbNav.prev {
-    left: 0;
-  }
-
-  #seriesLightbox .slbNav.next {
-    right: 0;
-  }
-
-  #seriesLightbox .slbClose {
-    top: 12px;
-    right: 12px;
-  }
-
-}
 
 
 
