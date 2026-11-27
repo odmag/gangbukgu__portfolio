@@ -1255,3 +1255,99 @@ footer {
   .seriesList { width: 92%; gap: 24px; }
   .seriesItem { height: 240px; }
 }
+
+/* ==========================================
+   SERIES PAGE LAYOUT
+   Works 페이지와 제목 및 여백 통일
+========================================== */
+
+.series-page .seriesWrap {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 160px;
+  padding-bottom: 80px;
+  background-color: var(--color-primary);
+  color: var(--color-primary-variant);
+  overflow-x: hidden;
+  text-align: center;
+}
+
+/* Series 페이지 제목 */
+.series-page .series__title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8rem;
+  letter-spacing: 0.5em;
+  cursor: default;
+  color: var(--color-primary-variant);
+}
+
+/* 시리즈 목록 */
+.series-page .seriesList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0;
+}
+
+/* 각 시리즈 */
+.series-page .seriesItem {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  min-height: 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* 시리즈 배경 이미지 */
+.series-page .seriesImg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%);
+  opacity: 0.95;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* 마우스를 올렸을 때 */
+.series-page .seriesItem:hover .seriesImg {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* LIFE, ONCE, LIFE2 제목 */
+.series-page .seriesTitle {
+  position: relative;
+  z-index: 5;
+  font-size: 3rem;
+  letter-spacing: 0.3em;
+  font-family: "Gelasio", serif;
+  font-weight: 400;
+  color: var(--color-white);
+  opacity: 0.9;
+}
+
+/* 준비 중인 시리즈 */
+.series-page .placeholder .seriesImg {
+  background: #999;
+  opacity: 0.4;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+
+  .series-page .seriesTitle {
+    font-size: 2rem;
+  }
+
+  .series-page .seriesItem {
+    height: 260px;
+    min-height: 260px;
+  }
+
+}
